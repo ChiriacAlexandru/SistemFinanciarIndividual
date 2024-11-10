@@ -1,0 +1,48 @@
+﻿@model IEnumerable<SistemFinanciarIndividual.Models.Categorie>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<div class="row">
+
+    <div class="col-md-7">
+        <ejs-grid id="categorii" dataSource="@Model" gridLines="None"
+        allowSorting="true" allowPaging="true">
+        <e-grid-pagesettings pageSize="5"></e-grid-pagesettings>
+            <e-grid-columns>
+                <e-grid-column headerText="Nume" field="TitleWithIcon"> </e-grid-column>
+                <e-grid-column headerText="Tip" template="#typeColumn" width="150px"> </e-grid-column>
+                <e-grid-column headerText="Editare" template="#actionTemplate"> </e-grid-column>
+
+</e-grid-columns>
+        </ejs-grid>
+    </div>
+    <div class="col-md-5">
+        <div class="widget h-100 d-flex justify-content-center align-items-center " style="background-color:#212b36">
+            <i class="fa-solid fa-shapes fa-2xl"></i>
+        </div>
+    </div>
+</div>
+
+
+<script id="typeColumn" type="text/x-template">
+
+            ${if(Tip=="Venit")}
+                <span class="badge bg-success" > ${Tip} </span>
+             ${else}
+                 <span class="badge bg-danger"> ${Tip} </span>
+    ${/if}
+
+</script>
+<script id="actionTemplate" type="text/x-template">
+
+    <div class="d-flex flex-row justify-content-start">
+        <a class="btn btn-sm" href="/categorie/addoredit/${idCategorie}">
+            <i class="fa-solid fa-pen fa-lg"></i>
+        </a>
+    </div>
+
+</script>

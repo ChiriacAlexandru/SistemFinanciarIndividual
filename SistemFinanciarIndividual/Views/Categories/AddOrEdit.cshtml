@@ -1,0 +1,50 @@
+﻿@model SistemFinanciarIndividual.Models.Categorie
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<hr />
+<div class="row">
+    <div class="col-md-7">
+        <div class="widget p-5">
+            <form asp-action="AddOrEdit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" name="idCategorie" value="@Model.idCategorie" />
+                <div class="form-group">
+                    <div class="e-btn-group custom-rbt-group">
+                        <input type="radio" id="radioleft" name="Tip" value="Plata" checked="@(Model.Tip=="Plata")" />
+                        <label class="e-btn" for="radioleft">Plata</label>
+                        <input type="radio" id="radiomiddle" name="Tip" value="Venit" checked="@(Model.Tip=="Venit")" />
+                        <label class="e-btn" for="radiomiddle">Incasare</label>
+                        <span asp-validation-for="Tip" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+                <div class="mb-4">
+                    <ejs-textbox id="Nume" placeholder="Nume" ejs-for="@Model.Nume" floatLabelType="Always"></ejs-textbox>
+
+                    <span asp-validation-for="Nume" class="text-danger"></span>
+                </div>
+                <div class="mb-4">
+                    <ejs-textbox id="Icon" placeholder="Icon" ejs-for="@Model.Icon" floatLabelType="Always"></ejs-textbox>
+
+                    <span asp-validation-for="Icon" class="text-danger"></span>
+                </div>
+                <ejs-button id="submit" cssClass="e-success" type="submit" content="Submit"></ejs-button>
+            </form>
+        </div> 
+
+    </div>
+    <div class="col-md-5">
+        <div class="widget h-100 d-flex justify-content-center align-items-center " style="background-color:#212b36">
+            <i class="fa-solid fa-shapes fa-2xl" ></i>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
